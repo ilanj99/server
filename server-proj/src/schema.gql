@@ -1,0 +1,51 @@
+type Song {
+  songId: ID!
+  songName: String!
+  songLength: interval!
+  artistId: ID!
+  albumId: ID
+}
+
+type Artist {
+  artistName: String!
+  artistId: ID!
+  artistBirthyear: Year!
+  artistBirthplace: String!
+}
+
+type Album {
+    albumName: String!
+    artistId: ID!
+    albumId: ID!
+}
+
+type Playlists {
+    playlistName: String!
+    playlistId: ID!
+}
+
+type PlaylistSongs {
+    playlistId: ID!
+    songIds: [ID!]!
+}
+
+
+type Query {
+    artistsByBirthYear(year: INT): [Artist!]!
+    getArtistWithMostTracksInPlaylist(playlistId: ID): ARTIST
+    getAllArtists(): [Artist!]!
+    getSongsLongerThanFiveMins(): [Song!]!
+    getplaylistsWithSong(songId: ID): [playlistId!]!
+
+}
+
+type Mutation {
+  addArtist(artistId: ID!, artistName: String!, email: String!): User!
+  addSong(songId: ID!, songName: String!, songLength: interval!, artistId: ID!, albumId: ID!): Song!
+  addAlbum(albumId: ID!, albumName: String!, artistId: ID!): Album!
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
