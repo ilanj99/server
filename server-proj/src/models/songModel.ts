@@ -1,5 +1,6 @@
-import { IntervalHistogram } from "perf_hooks"
+import { ObjectType } from "@nestjs/graphql"
 
+@ObjectType()
 export class Song {
     songId: number
     songName: string

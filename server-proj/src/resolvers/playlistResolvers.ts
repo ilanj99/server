@@ -5,14 +5,14 @@ import { playlistService } from '../services/playlistService';
 @Resolver(of => Playlist)
 export class PlaylistResolver {
 
-	constructor(
-		private readonly playlistService: playlistService,
-	) { }
+	// constructor(
+	// 	private readonly playlistService: playlistService,
+	// ) { }
 
-	@Query(returns => [Playlist], { name: 'Playlists', nullable: false })
-	async getplaylistsWithSong(@Args({ name: 'playlistsWithSong', type: () => [Playlist]}) songId: number) {
-		return this.playlistService.getPlaylistsWithSong(songId);
-	}
+	// @Query(returns => [Playlist], { name: 'Playlists', nullable: false })
+	// async getplaylistsWithSong(@Args({ name: 'playlistsWithSong', type: () => [Playlist]}) songId: number) {
+	// 	return this.playlistService.getPlaylistsWithSong(songId);
+	// }
 
 }
  

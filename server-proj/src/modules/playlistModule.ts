@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { playlistService } from '../services/playlistService';
-
+import { PlaylistResolver } from 'src/resolvers/playlistResolvers';
 import { GraphQLModule } from '@nestjs/graphql';
 
 @Module({
@@ -9,6 +9,7 @@ import { GraphQLModule } from '@nestjs/graphql';
       autoSchemaFile:true,
     }),
   ],
-  providers: [playlistService],
+  providers: [ playlistService, PlaylistResolver ],
+  exports: [ playlistService ],
 })
 export class PlaylistModule {}

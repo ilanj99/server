@@ -6,21 +6,21 @@ import { songService } from '../services/songService';
 
 
 
-@Resolver(Song)
+@Resolver(of => Song)
 export class SongResolver {
-  constructor(
-    private readonly songService: songService,
-  ) { }
 
-  @Query(returns => [Song], { name: 'Songs', nullable: false })
-  async getSongsLongerThanFiveMins() {
-    return this.songService.getSongsLongerThanFiveMins();
-  }
+  // constructor(
+  //   private readonly songService: songService,
+  // ) { }
 
-  @Query(returns => [Song], { name: 'songsInPlaylist', nullable: false })
-  async getSongsInPlaylist(playlistId: number) {
-    return this.songService.getSongsInPlaylist(playlistId);
-  }
+  // @Query(returns => [Song], { name: 'Songs', nullable: false })
+  // async getSongsLongerThanFiveMins() {
+  //   return this.songService.getSongsLongerThanFiveMins();
+  // }
 
-  
+  // @Query(returns => [Song], { name: 'songsInPlaylist', nullable: false })
+  // async getSongsInPlaylist(playlistId: number) {
+  //   return this.songService.getSongsInPlaylist(playlistId);
+  // }
+
 }
