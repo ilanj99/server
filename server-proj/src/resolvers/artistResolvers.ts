@@ -15,10 +15,10 @@ export class ArtistResolver {
     return this.artistService.getAll();
   }
 
-  // @Query(returns => [Artist], { name: 'artistsBornInYear', nullable: false })
-  // async getArtistsBornInYear(@Args({ name: 'year', type: () => Int }) year: number) {
-  //   return this.artistService.getArtistsBornInYear(year);
-  // }
+  @Query(returns => [Artist], { name: 'artistsBornInYear', nullable: false })
+  async getArtistsBornInYear(@Args({ name: 'year', type: () => Int }) year: number) {
+    return this.artistService.getArtistsBornInYear(year);
+  }
 
   // @Query(returns => Artist, { name: 'artistWithMostTracksInPlaylist', nullable: true })
   // async getArtistWithMostTracksInPlaylist(@Args({ name: 'playlistId', type: () => Artist }) playlistId: number) {
