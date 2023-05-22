@@ -8,7 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
+const songModule_1 = require("./modules/songModule");
 const artistModule_1 = require("./modules/artistModule");
+const playlistModule_1 = require("./modules/playlistModule");
+const playlistSongsModule_1 = require("./modules/playlistSongsModule");
 const graphql_1 = require("@nestjs/graphql");
 const apollo_1 = require("@nestjs/apollo");
 let AppModule = class AppModule {
@@ -21,7 +24,10 @@ AppModule = __decorate([
                 playground: true,
                 autoSchemaFile: true,
             }),
-            artistModule_1.ArtistModule
+            artistModule_1.ArtistModule,
+            playlistModule_1.PlaylistModule,
+            playlistSongsModule_1.PlaylistSongsModule,
+            songModule_1.SongModule
         ]
     })
 ], AppModule);

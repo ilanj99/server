@@ -5,9 +5,9 @@ import { PlaylistSongs } from 'src/models/playlistSongsModel';
 @Resolver(of => PlaylistSongs)
 export class PlaylistSongsResolver {
 
-  // constructor(
-  //   private readonly playlistSongsService: playlistSongsService,
-  // ) { }
+  constructor(
+    private readonly playlistSongsService: playlistSongsService,
+  ) { }
 
 
 }

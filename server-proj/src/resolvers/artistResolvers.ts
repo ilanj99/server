@@ -8,7 +8,7 @@ export class ArtistResolver {
 
   constructor(
     private readonly artistService: artistService,
-  ) { }
+  ) {}
 
   @Query(returns => [Artist], { name: 'allArtists', nullable: false })
   async getAllArtists() {
@@ -20,10 +20,15 @@ export class ArtistResolver {
     return this.artistService.getArtistsBornInYear(year);
   }
 
-  // @Query(returns => Artist, { name: 'artistWithMostTracksInPlaylist', nullable: true })
-  // async getArtistWithMostTracksInPlaylist(@Args({ name: 'playlistId', type: () => Artist }) playlistId: number) {
-  //   return this.artistService.getArtistWithMostTracksInPlaylist(playlistId);
-  // }
+  @Query(returns => Artist, { name: 'artistWithMostTracksInPlaylist', nullable: true })
+  async getArtistWithMostTracksInPlaylist(@Args({ name: 'playlistId', type: () => Int }) playlistId: number) {
+    return this.artistService.getArtistWithMostTracksInPlaylist(playlistId);
+  }
+
+  @Query(returns => Artist, { name: 'getSongsInPlaylist', nullable: true })
+  async getSongsInPlaylist(@Args({ name: 'playlistId', type: () => Int }) playlistId: number) {
+    return this.artistService.getSongsInPlaylist(playlistId);
+  }
 
   // @Mutation(returns => Post)
   // async addArtist(

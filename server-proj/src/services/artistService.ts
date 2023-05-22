@@ -14,7 +14,7 @@ export class artistService {
       .select(...allArtistFields)
       .from('artists');
     
-      return query;
+      return query; 
     }
     
     async getArtistsBornInYear(year: number) {
@@ -26,11 +26,31 @@ export class artistService {
       return query;
     }
 
-    // getArtistWithMostTracksInPlaylist = (playlistId: number) => {
-    //     const songs = this.songService.getSongsInPlaylist(playlistId);
+    async getArtistWithMostTracksInPlaylist(playlistId: number){
+      const query = 
+      db('getSongsInPlaylist')
+      .select('s.songId', 's.artistId')
+      .join('songs as s', 'playlistSongs.songId', 's.songId')
+      .where('playlistSongs.playlistId', playlistId);
+      
+      
+      return db('artistWithMostTracks')
+        .select('artistId')
+        .from(query.as('subquery'))
+        .groupBy('artistId')
+        .orderByRaw('count(*) DESC')
+        .limit(1);
+    }
 
-    //     return knex<Artist>('artistWithMostTracks').select('artistId').from(songs).groupBy('artistId').orderByRaw('count(*) DESC').limit(1);
-    // }
+    async getSongsInPlaylist(playlistId: number){
+      const query = 
+      db('getSongsInPlaylist')
+      .select('s.songId', 's.artistId')
+      .join('songs as s', 'playlistSongs.songId', 's.songId')
+      .where('playlistSongs.playlistId', playlistId);
+
+      return query;
+    }
 
     // addArtist = (artistId: number, artistName: string, artistBirthyear: number, artistBirthplace: string) => {
     //     const newArtist: Artist = {

@@ -7,6 +7,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+    "types": ["pg"],
     "target": "es2017",
     "sourceMap": true,
     "outDir": "./dist",

@@ -13,7 +13,10 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
       playground: true,
       autoSchemaFile: true,
     }),
-    ArtistModule
+    ArtistModule,
+    PlaylistModule,
+    PlaylistSongsModule,
+    SongModule
   ]
 })
 export class AppModule {}
