@@ -13,7 +13,14 @@ export class playlistService {
         return query;
 	}
 
-    async getPlaylistsWithSong(songId: number){
+    async getPlaylistsWithSong(songName: string){
+        const songId = 
+            db('getSongId')
+            .select('s.songId')
+            .from('songs as s')
+            .where('s.songName', songName)
+            .limit(1);
+
         const query = db('playlistsWithSong')
                     .select('pl.playlistName', 'pl.playlistId')
                     .from('playlists as pl')

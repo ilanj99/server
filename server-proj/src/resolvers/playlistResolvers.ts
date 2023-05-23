@@ -7,11 +7,11 @@ export class PlaylistResolver {
 
 	constructor(
 		private readonly playlistService: playlistService,
-	) { }
+	) {}
 
 	@Query(returns => [Playlist], { name: 'getPlaylistsWithSong', nullable: false })
-	async getPlaylistsWithSong(@Args({ name: 'songId', type: () => Int}) songId: number) {
-		return this.playlistService.getPlaylistsWithSong(songId);
+	async getPlaylistsWithSong(@Args({ name: 'songName', type: () => String}) songName: string) {
+		return this.playlistService.getPlaylistsWithSong(songName);
 	}
 
 	@Query(returns => [Playlist], { name: 'getAllPlaylists', nullable: false })

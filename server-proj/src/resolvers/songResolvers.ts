@@ -11,12 +11,12 @@ export class SongResolver {
 
   constructor(
     private readonly songService: songService,
-  ) { }
+  ) {}
 
-  // @Query(returns => [Song], { name: 'longSongs', nullable: false })
-  // async getSongsLongerThanFiveMins() {
-  //   return this.songService.getSongsLongerThanFiveMins();
-  // }
+  @Query(returns => [Song], { name: 'longSongs', nullable: false })
+  async getSongsLongerThanFiveMins() {
+    return this.songService.getSongsLongerThanFiveMins();
+  }
 
   @Query(returns => [Song], { name: 'songsInPlaylist', nullable: false })
   async getSongsInPlaylist(@Args({ name: 'playlistId', type: () => Int}) playlistId: number) {

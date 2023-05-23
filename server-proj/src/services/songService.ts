@@ -6,17 +6,17 @@ import { Injectable } from "@nestjs/common";
 @Injectable()
 export class songService {
     
-    // async getSongsLongerThanFiveMins(){ 
-        // const time:interval = "00:05:00";
+    async getSongsLongerThanFiveMins(){ 
+        const time = "00:05:00";
 
-    //     const query = 
-    //     db('longSongs')
-    //     .select('songName', 'songId', 'songLength')
-    //     .from('songs')
-    //     .where('songLength' > "00:05:00");
+        const query = 
+        db('longSongs')
+        .select('songName', 'songId', db.raw('to_char("songLength", \'MI:SS\') AS "songLength"'))
+        .from('songs')
+        .where('songLength', '>', time);
 
-    // return query;
-// }
+    return query;
+}
 
     async getSongsInPlaylist(playlistId: number){ 
         const query = 
